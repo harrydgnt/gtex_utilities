@@ -10,8 +10,12 @@ def name_list(sample_file):
 
 def tissue_extract(names, tissue_file):
     tissue_dict={}
+    line_counter=0
     for line in tissue_file:
-        tissue_dict[line.split()[0]] = line.split()[1]
+    	if line_counter == 0:
+    		line_counter = line_counter + 1 
+    		continue
+        tissue_dict[line.split()[0]] = line.split()[1:]
     sample_dict={}
     for item in names:
         try:
